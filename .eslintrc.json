@@ -1,0 +1,50 @@
+{
+    "plugins": ["@typescript-eslint", "import"],
+    "extends": [
+        "airbnb-base",
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "root": true,
+    "rules": {
+        "no-debugger": "off",
+        "no-console": 0,
+        "class-methods-use-this": "off",
+        "import/extensions": "off",
+        "import/prefer-default-export": "off",   // отключает необходимость default export (default в airbnb)
+        "@typescript-eslint/no-explicit-any": "error",   // ошибка неявного преобразования в тип any
+        // "@typescript-eslint/no-inferrable-types": "off",   // ошибка указания типа при явном присвоенни переменной типа значения
+        "@typescript-eslint/array-type": [  
+            "error",
+            { "default": "array"}   // ошибка при задании массива через Array<type>
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [  // обязательное указание модификатора доступа полям и методам
+            "error",
+            {
+                "accessibility": "explicit",
+                "overrides": {
+                    "accessors": "explicit",
+                    "constructors": "off",
+                    "methods": "explicit",
+                    "properties": "explicit",
+                    "parameterProperties": "explicit"
+                }
+            }
+        ],
+        // "max-lines-per-function": ["error", 40],   // максимальное количество строк в одной функции
+        "@typescript-eslint/explicit-function-return-type": "error",  // обязательное указание выходного типа функции
+        "@typescript-eslint/no-unnecessary-type-assertion": "error",  // ошибка при использовании "as"
+        "@typescript-eslint/no-non-null-assertion": "error"  // ошибка при задании наличия типа не null
+    }
+  }
